@@ -1,0 +1,34 @@
+.git
+.gitignore
+.env
+*.db
+*.sqlite
+*.sqlite3
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Knowledge (archivos privados del negocio)
+knowledge/*
+!knowledge/.gitkeep
+
+# Session state
+config/session.yaml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Docs
+docs/
+scripts/
+
+# Testing
+*.md
+CLAUDE.md
+NOTICE
