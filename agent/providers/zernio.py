@@ -55,7 +55,7 @@ class ProveedorZernio(ProveedorWhatsApp):
         firma_recibida = request.headers.get("X-Zernio-Signature") or request.headers.get(
             "X-Late-Signature"
         )
-        if not firza_recibida:
+        if not firma_recibida:
             logger.warning("Llego un webhook sin firma X-Zernio-Signature: rechazado")
             return False
 
@@ -68,7 +68,7 @@ class ProveedorZernio(ProveedorWhatsApp):
         # que Starlette decodifica como latin-1, y ahi tiraria TypeError: eso escaparia del
         # handler como un 500, y el proveedor reintentaria el evento siete veces.
         try:
-            iguales = hmac.compare_digest(firma_esperada, firza_recibida)
+            iguales = hmac.compare_digest(firma_esperada, firma_recibida)
         except TypeError:
             logger.warning("La firma del webhook trae caracteres invalidos: rechazado")
             return False
